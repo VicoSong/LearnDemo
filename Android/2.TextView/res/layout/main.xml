@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+    <!--android:id 定义控件的id.。android： textSize 设置字体大小。
+    	android：textColor 设置字体颜色-->
+<TextView 
+	android:id="@+id/tv"
+	android:autoLink="all"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:textSize="20sp" 
+	android:textColor="#00FF00"
+	android:singleLine="true"
+	android:focusable="true"
+	android:focusableInTouchMode="true"
+	android:ellipsize="marquee"
+	android:marqueeRepeatLimit="marquee_forever"
+	android:text="相遇总是在不经意间，你永远不知道下一刻会发生什么。红薯温暖了整个冬天，留下了美丽的回忆。静静的陪伴，默默的相守，管它岁月流年，任凭时光流逝。"
+/>
+</LinearLayout>

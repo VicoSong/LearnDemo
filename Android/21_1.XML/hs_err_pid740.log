@@ -1,0 +1,79 @@
+#
+# An unexpected error has been detected by Java Runtime Environment:
+#
+#  Internal Error (classFileParser.cpp:2923), pid=740, tid=2412
+#  Error: ShouldNotReachHere()
+#
+# Java VM: Java HotSpot(TM) Client VM (11.0-b15 mixed mode windows-x86)
+# If you would like to submit a bug report, please visit:
+#   http://java.sun.com/webapps/bugreport/crash.jsp
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00846c00):  JavaThread "Unknown thread" [_thread_in_vm, id=2412, stack(0x008d0000,0x00920000)]
+
+Stack: [0x008d0000,0x00920000]
+[error occurred during error reporting (printing stack bounds), id 0xc0000005]
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+
+Other Threads:
+
+=>0x00846c00 (exited) JavaThread "Unknown thread" [_thread_in_vm, id=2412, stack(0x008d0000,0x00920000)]
+
+VM state:not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Dynamic libraries:
+0x00400000 - 0x00424000 	C:\Program Files\Java\jdk1.6.0_10\bin\javaw.exe
+0x7c930000 - 0x7ca00000 	C:\windows\system32\ntdll.dll
+0x7c800000 - 0x7c92c000 	C:\windows\system32\kernel32.dll
+0x77f30000 - 0x77fdc000 	C:\windows\system32\ADVAPI32.dll
+0x77c20000 - 0x77cbf000 	C:\windows\system32\RPCRT4.dll
+0x76eb0000 - 0x76ec3000 	C:\windows\system32\Secur32.dll
+0x77e10000 - 0x77ea0000 	C:\windows\system32\USER32.dll
+0x77bd0000 - 0x77c19000 	C:\windows\system32\GDI32.dll
+0x76180000 - 0x7619d000 	C:\windows\system32\IMM32.DLL
+0x7f000000 - 0x7f009000 	C:\windows\system32\LPK.DLL
+0x74ae0000 - 0x74b45000 	C:\windows\system32\USP10.dll
+0x7c340000 - 0x7c396000 	C:\Program Files\Java\jdk1.6.0_10\jre\bin\msvcr71.dll
+0x6d8b0000 - 0x6db06000 	C:\Program Files\Java\jdk1.6.0_10\jre\bin\client\jvm.dll
+0x769e0000 - 0x76a0a000 	C:\windows\system32\WINMM.dll
+0x6d330000 - 0x6d338000 	C:\Program Files\Java\jdk1.6.0_10\jre\bin\hpi.dll
+0x76ab0000 - 0x76abb000 	C:\windows\system32\PSAPI.DLL
+0x6d860000 - 0x6d86c000 	C:\Program Files\Java\jdk1.6.0_10\jre\bin\verify.dll
+0x6d3d0000 - 0x6d3ef000 	C:\Program Files\Java\jdk1.6.0_10\jre\bin\java.dll
+0x6d8a0000 - 0x6d8af000 	C:\Program Files\Java\jdk1.6.0_10\jre\bin\zip.dll
+
+VM Arguments:
+jvm_args: -Dfile.encoding=GBK -Xbootclasspath:D:\Developing Tool\android-sdk-windows\platforms\android-8\android.jar 
+java_command: com.szy.xml.service.DOMPersonService
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=C:\Program Files\Java\jdk1.6.0_10
+PATH=C:/Program Files/Java/jdk1.6.0_10/bin/../jre/bin/client;C:/Program Files/Java/jdk1.6.0_10/bin/../jre/bin;C:\oracle\product\10.2.0\db_1\bin;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\Program Files\Microsoft SQL Server\80\Tools\Binn\;C:\Program Files\Microsoft SQL Server\90\Tools\binn\;C:\Program Files\Microsoft SQL Server\90\DTS\Binn\;C:\Program Files\Microsoft SQL Server\90\Tools\Binn\VSShell\Common7\IDE\;C:\Program Files\Microsoft Visual Studio 8\Common7\IDE\PrivateAssemblies\;C:\Program Files\SinoVoice\jTTS 5.0 Desktop\Bin;C:\Program Files\Common Files\Thunder Network\KanKan\Codecs;C:\Program Files\Java\jdk1.6.0_10\bin;D:\Developing Tool\android-sdk-windows\platform-tools;D:\Developing Tool\android-sdk-windows\tools
+USERNAME=Administrator
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=x86 Family 6 Model 14 Stepping 12, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows Server 2003 family Build 3790 Service Pack 2
+
+CPU:total 2 (2 cores per cpu, 1 threads per core) family 6 model 14 stepping 12, cmov, cx8, fxsr, mmx, sse, sse2, sse3
+
+Memory: 4k page, physical 2095488k(1248780k free), swap 3517508k(2904300k free)
+
+vm_info: Java HotSpot(TM) Client VM (11.0-b15) for windows-x86 JRE (1.6.0_10-rc2-b32), built on Sep 12 2008 00:52:11 by "java_re" with MS VC++ 7.1
+
+time: Tue May 24 19:38:03 2011
+elapsed time: 0 seconds
+
