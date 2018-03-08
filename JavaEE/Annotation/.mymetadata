@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="Annotation"
+  id="myeclipse.1453461879559"
+  context-root="/Annotation"
+  j2ee-spec="6.0"
+  archive="Annotation.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <!-- 修改方法名默认后缀 -->
+    <!-- <constant name="struts.action.extension" value="action"></constant>  -->
+    <!-- 	开启开发发模式 -->
+    <constant name="struts.devMode" value="true" />
+    <package name="p1" abstract="false"  namespace="/" extends="struts-default">
+    	<!-- 配置一个动作 -->
+    	<!-- <action name="sayHello" class="com.swk.struts.helloaction.HelloAction" method="sayHello">
+    		配置结果视图 
+    		<result name="success">/success.jsp</result>
+    	</action> -->
+    	<!-- 1就对应着第一个*的内容 ,2就对应着第二个*的内容-->
+    <!-- 	<action name="*" class="com.swk.struts.action.demo"  method="{1}">
+    		<result name="success">/{1}.jsp</result>
+    	</action>
+    	<action name="*_*" class="com.swk.struts.action.demo"  method="{1}{2}">
+    		
+    		<result name="success">/{1}{2}.jsp</result>
+    	</action>
+    	 -->
+    	 <!-- 配置默认视图 -->
+    	 <!-- <default-action-ref  name="defaultAction"></default-action-ref>
+    	 <action name="defaultAction" >
+    	 	<result>/success.jsp</result>
+    	 </action> -->
+    	<!-- <action name="getServletInstance" class="com.swk.struts.getservletinstance.GetServletInstance" >
+    		配置结果视图 
+    		<result name="success">/success.jsp</result>
+    	</action>
+    	<action name="getServletInstance2" class="com.swk.struts.getservletinstance.GetServletInstance2" >
+    		配置结果视图 
+    		<result name="success">/success.jsp</result>
+    	</action>
+    	<action name="resultAction" class="com.swk.struts.action.result.ResultAction" method="save">
+    		配置结果视图   type value:dispather(default value)、redirect、chain、redirectionAction、stream、plainText
+    		<result name="success" type="redirect">/success.jsp</result>
+    		<result name="error">/error.jsp</result>
+    	</action> -->
+    	
+    	<!--声明自定义拦截器  -->
+		<!-- <interceptors>
+			<interceptor name="interceptorDemo" class="com.swk.struts.interceptor.InterceptorDemo"></interceptor>
+		</interceptors>  -->
+		<!--使用自定义拦截器： 只要自己明确指定了一个拦截器，默认的拦截器都不起作用  -->   	
+		<!-- <action name="demo" class="com.swk.struts.interceptor.ActionMethod">
+			<interceptor-ref name="interceptorDemo"></interceptor-ref>
+			<result>/success.jsp</result>
+		</action> -->
+    </package> 
+    <package name="p2"  namespace="/" extends="struts-default">
+    	<!-- <action name="addCustomer" class="com.swk.struts.actionmapping.CustomerAction" method="addCustomer">
+    	<result name="success">/addCustomer.jsp</result>
+    	<result name="error">/error.jsp</result>
+    	</action>
+    	<action name="updateCustomer" class="com.swk.struts.actionmapping.CustomerAction" method="updateCustomer">
+    	<result name="success">/updateCustomer.jsp</result>
+    	<result name="error">/error.jsp</result>
+    	</action>
+    	<action name="delCustomer" class="com.swk.struts.actionmapping.CustomerAction" method="delCustomer">
+    	<result name="success">/delCustomer.jsp</result>
+    	<result name="error">/error.jsp</result>
+    	</action><action name="findCustomer" class="com.swk.struts.actionmapping.CustomerAction" method="findCustomer">
+    	<result name="success">/findCustomer.jsp</result>
+    	<result name="error">/error.jsp</result>
+    	</action> -->
+    	
+    	<!-- 使用通配符*代替 -->
+    	<!-- <action name="*" class="com.swk.struts.actionmapping.CustomerAction" method="{1}">
+    	<result name="success">/{1}.jsp</result>
+    	</action> -->
+    	<!-- <action name="*_*" class="com.swk.struts.actionmapping.{2}Action" method="{1}{2}">
+    	<result name ="success">/{1}{2}.jsp</result>
+    	</action> -->
+    	<!--DMI:动态方法调用，struts2默认不允许执行动态方法，可以通过配置  struts.enable.DynamicMethodInvocation = true 实现动态方法调用，缺点：容易把方法暴露给客户端 -->
+    	<!-- <action name="customer" class="com.swk.struts.actionmapping.CustomerAction"></action>
+    	-->
+    </package> 
+    <package name="p3" extends="struts-default">
+   		<!--  配置默认Action -->
+    	<!-- <default-action-ref name="defaultAction"></default-action-ref>
+    	<action name="defaultAction" >
+    		<result name="success">/success.jsp</result>
+   	 	</action>
+    	<action name="customer" class="com.swk.struts.actionmapping.CustomerAction">
+    		<result name="success">/success.jsp</result>
+   		 </action> -->
+   		 <!-- result 结果视图 -->
+   		 <!-- dispatcher:默认结果视图类型，请求转发到一个页面-->
+   		 <!-- <action name="save" class="com.swk.struts.action.demo.result.ResultView">
+   		 	<result name="success" type="dispatcher">/success.jsp</result>
+   		 	<result name="error" type="dispatcher">/error.jsp</result>
+   		 </action> -->
+   		 <!-- redirect：请求重定向到一个页面-->
+   		  <!-- <action name="save" class="com.swk.struts.action.demo.result.ResultView">
+   		 	<result name="success" type="redirect">/success.jsp</result>
+   		 	<result name="error" type="redirect">/error.jsp</result>
+   		 </action> -->
+   		 <!-- chain:请求转发到另一个动作 -->
+   		 <!-- <action name="action1" class="com.swk.struts.action.demo.result.ResultView">
+   		 	<result type="chain">save</result>
+   		 </action> -->
+   		 <!-- redirectAction:重定向到另外一个动作 -->
+   		 <!-- <action name="save" class="com.swk.struts.action.demo.result.ResultView">
+   		 	<result name="success" type="redirectAction">save</result>
+   		 </action> -->
+   		 <!-- stream:用于文件上传下载 -->
+   		  <!-- plainText:以纯文本的形式展现内容-->
+   		 <!--  <action name="action2">
+   		  	<result type="plainText">/plainText.jsp</result>
+   		  </action> -->
+    </package>
+    <!--lession two  -->
+    	<!-- 自定义结果视图 -->
+    	<!-- <package name = "mystruts-default" extends = "struts-default">
+    		<result-types>
+    			<result-type name="captcha" class="com.swk.struts.defineresultType.CaptchaResult"></result-type>
+    		</result-types>
+    	</package>
+    	<package name="p4" extends ="mystruts-default">
+    		<action name = 'captcha' >
+    			<result name = "success"  type = "captcha">
+					<param name="height">30</param>
+					<param name="width">120</param>
+				</result>
+    		</action>
+    	</package> -->
+    	<package name ="p5" extends ="struts-default">
+    		<action name ="person" class ="com.swk.struts.encapsulationparam.PersonAction" >
+    			 <param name ="name">vico</param>
+    			<param name ="age">24</param>
+    			<param name ="password">101000</param> 
+    		</action> 
+    		<action name ="student" class="com.swk.struts.encapsulationparam.actionmodeldepart.action.StudentAction" method="save">
+    		</action>
+    		<action name ="customer" class="com.swk.struts.encapsulationparam.modeldriven.CustomerAction" method="save">
+    		</action>
+    		<action name ="students" class="com.swk.struts.encapsulation.collectionparam.StudentsAction" method="save">
+    		</action>
+    		<action name ="studentsMap" class="com.swk.struts.encapsulation.collectionparam.StudentsMapAction" method="save">
+    		</action>
+    	</package>
+</struts>

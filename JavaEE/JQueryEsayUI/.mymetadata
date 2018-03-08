@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="JQueryEsayUI"
+  id="myeclipse.1460776196066"
+  context-root="/JQueryEsayUI"
+  j2ee-spec="5.0"
+  archive="JQueryEsayUI.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

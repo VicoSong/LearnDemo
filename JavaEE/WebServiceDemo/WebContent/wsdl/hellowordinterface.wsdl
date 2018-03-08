@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="HelloWordImplService" targetNamespace="http://interfce.swk.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://interfce.swk.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema">
+  <import namespace="http://interfce.swk.com/" schemaLocation="hellowordinterface_schema1.xsd"/>
+</schema>
+  </wsdl:types>
+  <wsdl:message name="sayHiResponse">
+    <wsdl:part name="parameters" element="tns:sayHiResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sayHello">
+    <wsdl:part name="parameters" element="tns:sayHello">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sayHi">
+    <wsdl:part name="parameters" element="tns:sayHi">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sayHelloResponse">
+    <wsdl:part name="parameters" element="tns:sayHelloResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="HelloWordInterface">
+    <wsdl:operation name="sayHi">
+      <wsdl:input name="sayHi" message="tns:sayHi">
+    </wsdl:input>
+      <wsdl:output name="sayHiResponse" message="tns:sayHiResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sayHello">
+      <wsdl:input name="sayHello" message="tns:sayHello">
+    </wsdl:input>
+      <wsdl:output name="sayHelloResponse" message="tns:sayHelloResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="HelloWordImplServiceSoapBinding" type="tns:HelloWordInterface">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="sayHi">
+      <soap:operation soapAction="urn:SayHi" style="document"/>
+      <wsdl:input name="sayHi">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="sayHiResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sayHello">
+      <soap:operation soapAction="urn:SayHello" style="document"/>
+      <wsdl:input name="sayHello">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="sayHelloResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="HelloWordImplService">
+    <wsdl:port name="HelloWordImplPort" binding="tns:HelloWordImplServiceSoapBinding">
+      <soap:address location="http://localhost:8080/WebServiceDemo/services"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<applications xmlns="http://www.wabacus.com"
+			   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			   xsi:schemaLocation="http://www.wabacus.com ../xsd/wabacus.applications.xsd">
+		<page id="main">
+			<report id="reportone" title="部门管理" type="editablelist2">
+				<display>
+					<col column="dep_id" label="部门编号"></col>
+					<col column="first_dep" label="一级部门"></col>
+					<col column="second_dep" label="二级部门"></col>
+					<col column="third_dep" label="三级部门"></col>
+					<col column="cost_center" label="成本中心"></col>
+					<col column="cost_center_no" label="成本中心号编码"></col>
+					<col column="creater" label="创建人"></col>
+					<col column="create_time" label="创建时间"></col>
+				</display>
+				<sql>
+					<select>
+						<value>
+						select dep_id,first_dep,second_dep,third_dep,cost_center,cost_center_no,creater,create_time from cms.c_department where {#condition#}
+						</value>
+						<condition label="部门编号" name="textname">
+							<value>
+								dep_id like '%#data#%'
+							</value>
+						</condition>
+					</select>
+					<insert>
+						insert cms.c_department(@{dep_id},@{first_dep},@{second_dep},@{third_dep},@{cost_center},@{cost_center_no},@{creater},@{create_time};
+					</insert>
+					<update>
+						update cms.c_department (@{first_dep},@{second_dep},@{third_dep}) where (@{dep_id});
+					</update>
+					<delete>
+						delete from cms.c_department where @{dep_id};
+					</delete>
+				</sql>
+			</report>
+		</page>
+		
+		<!--  <page id="add">
+			
+		</page>
+		
+		<page id="modify">
+			
+		</page>-->
+</applications>

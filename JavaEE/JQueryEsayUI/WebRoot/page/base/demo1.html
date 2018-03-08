@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>demo1.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="../../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../js/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../js/locale/easyui-lang-zh_CN.js"></script>
+   <link rel="stylesheet" type="text/css" href="../../js/themes/default/easyui.css">
+   <link rel="stylesheet" type="text/css" href="../../js/themes/icon.css">
+ 
+	<style type="text/css">
+	 	#draggableDiv {
+	 		boerder: 3px solide red;
+	 		background: red;
+	 		height:300px;
+	 		width:300px;
+	 	}
+	 	
+	 	#ff div{
+	 		padding:16px;
+	 	}
+	
+	</style>
+	<script type="text/javascript">
+		/* 进度条 */
+		/*progressBarDiv2 
+		$().ready(function(){
+			load();
+		});
+		
+		var i=0;
+		function load()
+		{
+			$("#progressBarDiv2").progressbar({
+				value:i++
+			});
+			
+			window.setTimeout(function(){
+				load();
+			},100);
+		} */
+		/* 菜单 */
+	/* 	$(function(){
+			$("#menu1").menu("show",{
+				left:200,
+				top:200
+			});
+		
+		}); */
+		
+		/* $(function(){
+			$("#winbtn").bind("click",function(){
+				$("#window").css("display","block");
+				$("#window").window({
+					height:400,
+					width:300,
+					title:"New",
+					modal:true,
+					collapsible:false,
+					resizable:false
+				});
+			});
+		}); */
+		/* window */
+		/* $(function(){
+			$("#winbMessagebtn").click(function(){
+				$.messager.confirm('确认','您确认想要退出系统吗？',function(r){    
+				    if (r){    
+				        alert('确定');    
+				    }    
+				});  
+				
+					$.messager.show({
+						title:'我的消息',
+						msg:'<a href="http://www.baidu.com" target="_blank">打开百度</a>',
+						timeout:5000,
+						showType:'slide'
+					});
+				
+			});
+		
+		}); */
+		/* tree */
+		$(function(){
+			$("#treeList").tree({
+				url:"tree-data.json",
+				animate:true,
+				onBeforeExpand:function(node){},
+				lines:true,
+				checkbox:true,
+				dnd:true,
+				onClick: function(node){
+					alert(node.text);  // 在用户点击的时候提示
+					console.info(node);
+					alert(node.attributes.url);
+				},
+				
+			});
+		
+		});
+		
+		
+	</script>
+  </head>
+  <body>
+  		<!-- 可拖动 -->
+		<div id="draggableDiv" class ="easyui-draggable" hidden></div>   
+		<!-- 进度条 --> 
+		<div id="progressBarDiv1" class="easyui-progressbar" data-options="value:60" style="width:400px;" hidden></div> 
+		<div id="progressBarDiv2"   style="width:400px;" hidden></div> 
+		<!-- 菜单 -->
+		<div id="menu1"  class="easyui-menu" style="width:200px;" hidden>
+			<div data-options="iconCls:'icon-add'">添加</div>
+			<div class="menu-sep"></div>
+			<div data-options="iconCls:'icon-remove'">删除</div>
+			<div class="menu-sep"></div>
+			<div data-options="iconCls:'icon-update'">修改</div>
+			<div class="menu-sep"></div>
+			<div data-options="iconCls:'icon-update'">open way
+				<div style="width:200px">
+					<div >one</div>
+					<div >two</div>
+					<div >three</div>
+				</div>
+			</div>
+		</div> 
+		<!-- 按钮 -->
+		<div id ="button" hidden>
+		<a id="btn" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">easyui</a> </div> 
+			<!-- 窗口 -->
+		<div id ="window" style="display:none;" hidden>
+			<form id="ff" method="post">   
+			    <div>   
+			        <label for="name">Name:</label>   
+			        <input class="easyui-validatebox" type="text" name="name" data-options="required:true" />   
+			    </div>   
+			    <div>   
+			        <label for="email">Email:</label>   
+			        <input class="easyui-validatebox" type="text" name="email" data-options="validType:'email'" />   
+			    </div>   
+			    <div>   
+			        <label for="birthday">birthday:</label>   
+			        <input  class="easyui-datebox"  name="birthday"  />   
+			    </div> 
+			    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+			    <a id="winbtnOk" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">OK</a>&nbsp; &nbsp;
+			    <a id="winbtnCancle" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-reset'">cancle</a> 
+			</form>  
+		</div>
+		<div id="linkToWindow" hidden><a id="winbtn" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">new</a></div>
+		<div id="winMesDiv" style="float:right" hidden><a id="winbMessagebtn" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">new</a></div>
+		<!-- 树 -->
+		<div id ="treeDiv">
+			<ul id="treeList"></ul>
+		</div>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ajax 调用web Service</title>
+<script type="text/javascript">
+	function createXmlHttpRequest(){
+		try{
+			return new XMLHttpRequest();
+		}catch(e)
+		{
+			try{
+				 return new ActiveXObjext("Msxml.XMLHTTP");
+			}catch(e)
+			{
+				try{
+					return new ActiveXObject("Microsoft.XMLHTTP");
+				}catch(e)
+				{
+					alert("fail to create XmlHttpRequest object ");
+					throw(e);
+				}
+				
+			}
+		}
+	}
+	
+	var xmlHttp=createXmlHttpRequest();
+	function sendMsg()
+	{
+		var url="http://localhost:9090/hello";
+		var requestbody="<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:q0=\"http://service.webservice.swk.com/\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">"
+		+"<soapenv:Body><q0:sayHello><arg0>weikang.song</arg0> </q0:sayHello></soapenv:Body></soapenv:Envelope>";
+		
+		xmlHttp.open("POST",url);
+		xmlHttp.setRequestHeader("Content-Type","text/xml;charset=utf-8");
+		
+		xmlHttp.onreadystatechange=function(){
+					if(xmlHttp.readyState==4)
+					{
+						
+						if(xmlHttp.status==200)
+						{
+							var rx=xmlHttp.responseXML;
+							alert(rx);
+						}else
+						{
+							alert("no result");
+						}
+						
+					}
+		};
+		
+		xmlHttp.send(requestbody);
+	}
+	
+	
+</script>
+</head>
+<body>
+	<input type="button" name="send"  value="send" onclick="sendMsg()"/>
+</body>
+</html>

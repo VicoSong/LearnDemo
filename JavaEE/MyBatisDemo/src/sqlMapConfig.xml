@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<!-- 起别名 ,推荐使用别名，容易引起混乱-->
+	<!-- <typeAliases>
+		<typeAlias type="com.swk.mybatis.domain.Person" alias="Person"/>
+	</typeAliases>
+ -->
+	<!-- 配置数据源、事务 -->
+	<environments default="test">
+		<environment id="test">
+			<!-- 事务：JDBC/MANAGED(自己管理) -->
+			<transactionManager type="JDBC"></transactionManager>
+			<!-- 数据源：POOLED/UNPOOLED/JNDI -->
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver"/>
+				<property name="url" value="jdbc:mysql://localhost:3306/mybatisdb?charsetEncoding=utf8"/>
+				<property name="username" value="root"/>
+				<property name="password" value="123456"/>
+			</dataSource>
+		</environment>
+		<environment id="deploy">
+			<!-- 事务：JDBC/MANAGED(自己管理) -->
+			<transactionManager type="JDBC"></transactionManager>
+			<!-- 数据源：POOLED/UNPOOLED/JNDI -->
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver"/>
+				<property name="url" value="jdbc:mysql://localhost:3306/mybatis?charsetEncoding=utf8"/>
+				<property name="username" value="root"/>
+				<property name="password" value="123456"/>
+			</dataSource>
+		</environment>
+	</environments>
+	<!-- 配置映射文件 mapper -->
+	<mappers>
+		<mapper resource="com/swk/mybatis/mapper/PersonMapper.xml"></mapper>
+		<mapper resource="com/swk/mybatis/mapper/PersonInfoMapper.xml"/>
+	
+	</mappers>
+</configuration>

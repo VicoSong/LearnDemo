@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="DynamicProxy"
+  id="myeclipse.1453557670448"
+  context-root="/DynamicProxy"
+  j2ee-spec="6.0"
+  archive="DynamicProxy.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

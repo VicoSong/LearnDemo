@@ -1,0 +1,33 @@
+<xs:schema xmlns:tns="http://interfce.swk.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://interfce.swk.com/" version="1.0">
+
+  <xs:element name="sayHello" type="tns:sayHello"/>
+
+  <xs:element name="sayHelloResponse" type="tns:sayHelloResponse"/>
+
+  <xs:element name="sayHi" type="tns:sayHi"/>
+
+  <xs:element name="sayHiResponse" type="tns:sayHiResponse"/>
+
+  <xs:complexType name="sayHi">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="sayHiResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="sayHello">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="sayHelloResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>

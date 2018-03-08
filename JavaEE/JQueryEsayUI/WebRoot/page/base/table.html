@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>table.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+     <script type="text/javascript" src="../../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../js/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../js/locale/easyui-lang-zh_CN.js"></script>
+   <link rel="stylesheet" type="text/css" href="../../js/themes/default/easyui.css">
+   <link rel="stylesheet" type="text/css" href="../../js/themes/icon.css">
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+    <script type="text/javascript">
+    	$(function(){
+    		$("#table_grid").datagrid({
+    			url:"",
+    			columns:[[    
+				        {field:'code',title:'车次',width:100},    
+				        {field:'station',title:'出发站<br>到达站',width:100},    
+				        {field:'time',title:'出发时间<br>到达时间',width:100}, 
+				        {field:'swz',title:'商务座',width:100},  
+				        {field:'yz',title:'硬座',width:100},   
+				        {field:'tdz',title:'特等座',width:100},  
+				        {field:'wz',title:'无座',width:100},   
+				        {field:'qt',title:'其他',width:100},  
+				        {field:'bz',title:'备注',width:100}   
+    					]],    
+    			
+    		});
+    	});
+    </script>
+  </head>
+  <body>
+   		<div id="div_grid">
+   			<table id="table_grid"></table>
+   		</div>
+  </body>
+</html>

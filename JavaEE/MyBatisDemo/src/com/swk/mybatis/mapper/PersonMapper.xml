@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.swk.mybatis.mapper.PersonMapper" >
+	
+	<!-- sql片段 -->
+	<sql id="cols">
+		id,user_name,age,remark
+	</sql>
+	
+	<!-- 对象的属性与结果集之间的对应关系 -->
+	<resultMap type="com.swk.mybatis.domain.Person" id="personRM">
+				<!-- 主键映射 -->
+				<id property="id" column="ID"></id>
+				<!-- 普通字段,property指实体的属性，column指结果集的字段名称 -->
+				<result property="name" column="USER_NAME"/>
+				<result property="age" column="AGE"/>
+				<result property="remark" column="REMARK"/>
+				
+				<!-- 对象关联 -->
+					<!-- 人员与人员信息，一对一关系 -->
+					<association property="personInfo" javaType="com.swk.mybatis.domain.PersonInfo">
+						<id property="id" column="ID"/>
+						<result property="work" column="WORK"/>
+						<result property="intime" column="INTIME"/>
+					</association>
+	</resultMap>
+	
+	<select id="relateQuery"  resultMap="personRM">
+		select <include refid="cols"/>  from person
+	</select>
+	
+</mapper>
+

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.swk.mybatis.mapper.PersonMapper" >
+	
+	<!-- sql片段 -->
+	<sql id="cols">
+		id,user_name ,age,remark
+	</sql>
+	
+	<!-- 对象的属性与结果集之间的对应关系 -->
+	<resultMap type="com.swk.mybatis.domain.Person" id="personRM">
+				<!-- 主键映射 -->
+				<id property="id" column="ID"></id>
+				<!-- 普通字段,property指实体的属性，column指结果集的字段名称 -->
+				<result property="name" column="USER_NAME"/>
+				<result property="age" column="AGE"/>
+				<result property="remark" column="REMARK "/>
+				<!-- 对象关联 -->
+	</resultMap>
+	
+	<!-- 查询，注意mybatis中如果有填写集合类型，只填写集合中元素的类型 -->
+	<!-- <select id="find" resultType="com.swk.mybatis.domain.Person">
+		select id,user_name as name,age,remark from person
+	</select> -->
+	
+	<!-- 测试resultMap -->
+	<select id="find" resultMap="personRM">
+	
+		select <include refid="cols"/> from person
+	</select>
+	
+	<!-- 查询一个 -->
+	 <select id="get" parameterType="int" resultType="com.swk.mybatis.domain.Person">
+		select id,user_name as name,age,remark  from person
+		where id =#{id}
+	</select> 
+	
+	<!-- 测试别名，在sqlMapperConfig中配置 -->
+	<!-- <select id="get" parameterType="int" resultType="Person">
+		select id,user_name as name,age,remark  from person
+		where id =#{id}
+	</select> -->
+	
+	<!-- 新增 -->
+	<insert id="insert" parameterType="com.swk.mybatis.domain.Person">
+		insert into person
+		(<include refid="cols"/>)
+		values
+		(#{id},#{name},#{age},#{remark})
+	</insert>
+	
+	<!-- 修改 -->
+	<update id="update" parameterType="com.swk.mybatis.domain.Person">
+		update person
+		set user_name=#{name},remark=#{remark} 
+		where  id= #{id}
+	</update>
+	
+	<!-- 记录总数 -->
+	<select id="count" resultType="int">
+		select count(*) from person
+	</select>
+	
+	<!-- 动态sql -->
+		<!-- 带条件查询 -->
+	<!-- <select id="queryWithCondition" parameterType="map" resultMap="personRM">
+		select <include refid="cols"/> from person
+		where user_name like #{name} and age=#{age}
+	</select>	 -->
+	<!-- 测试where,自动去掉where条件开头的and 或者or -->
+	<select id="queryWithCondition" parameterType="map" resultMap="personRM">
+		select <include refid="cols"/> from person
+		<where>
+			<if test="name!=null"> and user_name like #{name}</if>
+			<if test="age!=null"> and age= #{age}</if>
+		</where>
+	</select>
+	<!--  测试set,自动去掉末尾的逗号 -->
+	<update id="updateDyn" parameterType="com.swk.mybatis.domain.Person">
+		update person
+		<set>
+			<if test="name!=null">user_name=#{name},</if>
+			<if test="age!=null">age=#{age},</if>
+			<if test="remark!=null">remark=#{remark},</if>
+		</set>
+		where  id= #{id}
+	</update>
+	<!-- 测试foreach标签，删除多条记录 整形数组 -->
+	<delete id="deleteMultiArry">
+		delete from person
+		where id in
+		(
+			<foreach collection="array" item="id" separator=",">
+				#{id}
+			</foreach>
+		)
+	
+	</delete>
+	<!-- 测试foreach标签，删除多条记录 list -->
+	<delete id="deleteMultiList">
+		delete from person
+		where id in
+			<foreach collection="list" item="id" open="(" close=")" separator=",">
+				#{id}
+			</foreach>
+	</delete>
+		<!-- 测试foreach标签，删除多条记录 map -->
+	<delete id="deleteMultiMap">
+		delete from person
+		where id in
+			<foreach collection="beans" item="bean" open="(" close=")" separator=",">
+				#{bean.id}
+			</foreach>
+	</delete>
+	<!-- 测试特殊字符 使用<![CDATA[ content ]]> -->
+	<select id="queryUseSpecChar" parameterType="map" resultMap="personRM">
+		select <include refid="cols"/> from person
+		<where>
+			<if test="name!=null"> and user_name like #{name}</if>
+			<if test="startAge!=null"> and age>= #{startAge}</if>
+			<if test="endAge!=null"> and <![CDATA[ age<= #{endAge} ]]></if>
+		</where>
+	</select>
+	
+	
+</mapper>
+
